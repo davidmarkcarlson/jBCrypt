@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.squareup.mindrot</groupId>
 	<artifactId>jBCrypt</artifactId>
-	<version>0.4.1-51d5f7f-FORK</version>
+	<version>0.4.1-51d5f7f-FORK-1</version>
 	<packaging>bundle</packaging>
 	<name>jBCrypt</name>
 	<url>http://www.mindrot.org/projects/jBCrypt</url>
