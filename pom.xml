@@ -25,10 +25,10 @@
 		</developer>
 	</developers>
 	<scm>
-		<connection>scm:git:git@github.com:svenkubiak/jBCrypt.git</connection>
-		<developerConnection>scm:git:git@github.com:svenkubiak/jBCrypt.git</developerConnection>
-		<url>git@github.com:svenkubiak/jBCrypt.git</url>
-		<tag>0.4.1</tag>
+		<connection>scm:git:git@github.com:davidmarkcarlson/jBCrypt.git</connection>
+		<developerConnection>scm:git:git@github.com:davidmarkcarlson/jBCrypt.git</developerConnection>
+		<url>git@github.com:davidmarkcarlson/jBCrypt.git</url>
+		<tag>0.4.1-51d5f7f-FORK-1</tag>
 	</scm>
 	<description>A Java implementation of OpenBSD's Blowfish password hashing code http://www.mindrot.org/projects/jBCrypt</description>
 	<build>
