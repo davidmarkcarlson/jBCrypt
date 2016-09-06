@@ -65,3 +65,8 @@ Use it in your project by adding the following to your project *pom.xml*:
 
 
 # Local fork notes:
+
+square-1: 
+Supports $2b$ prefix for modular crypt formatted hashes on verification, and writes
+using the same updated prefix. See http://www.openwall.com/lists/oss-security/2012/01/02/4
+and http://pythonhosted.org/passlib/modular_crypt_format.html.
