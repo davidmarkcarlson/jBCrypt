@@ -62,3 +62,6 @@ Use it in your project by adding the following to your project *pom.xml*:
             <artifactId>jBcrypt</artifactId>
             <version>0.4.1</version>
         </dependency>
+
+
+# Local fork notes:
