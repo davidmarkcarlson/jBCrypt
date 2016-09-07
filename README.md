@@ -70,3 +70,5 @@ square-1:
 Supports $2b$ prefix for modular crypt formatted hashes on verification, and writes
 using the same updated prefix. See http://www.openwall.com/lists/oss-security/2012/01/02/4
 and http://pythonhosted.org/passlib/modular_crypt_format.html.
+
+downgrade to java 1.7
