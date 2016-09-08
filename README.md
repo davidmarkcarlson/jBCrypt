@@ -72,3 +72,5 @@ using the same updated prefix. See http://www.openwall.com/lists/oss-security/20
 and http://pythonhosted.org/passlib/modular_crypt_format.html.
 
 downgrade to java 1.7
+
+fix javadoc typos
