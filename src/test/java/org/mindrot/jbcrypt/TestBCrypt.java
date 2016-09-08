@@ -14,7 +14,6 @@
 
 package org.mindrot.jbcrypt;
 
-import org.mindrot.jbcrypt.BCrypt;
 import junit.framework.TestCase;
 
 /**
@@ -99,10 +98,10 @@ public class TestBCrypt extends TestCase {
 	 */
 	public void testHashpw() {
 		System.out.print("BCrypt.hashpw(): ");
-		for (int i = 0; i < test_vectors.length; i++) {
-			String plain = test_vectors[i][0];
-			String salt = test_vectors[i][1];
-			String expected = test_vectors[i][2];
+		for (String[] test_vector : test_vectors) {
+			String plain = test_vector[0];
+			String salt = test_vector[1];
+			String expected = test_vector[2];
 			String hashed = BCrypt.hashpw(plain, salt);
 			assertEquals(hashed, expected);
 			System.out.print(".");
@@ -151,9 +150,9 @@ public class TestBCrypt extends TestCase {
 	 */
 	public void testCheckpw_success() {
 		System.out.print("BCrypt.checkpw w/ good passwords: ");
-		for (int i = 0; i < test_vectors.length; i++) {
-			String plain = test_vectors[i][0];
-			String expected = test_vectors[i][2];
+		for (String[] test_vector : test_vectors) {
+			String plain = test_vector[0];
+			String expected = test_vector[2];
 			assertTrue(BCrypt.checkpw(plain, expected));
 			System.out.print(".");
 		}

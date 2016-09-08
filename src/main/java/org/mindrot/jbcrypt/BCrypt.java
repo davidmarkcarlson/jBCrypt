@@ -387,7 +387,7 @@ public class BCrypt {
 	private static String encode_base64(byte d[], int len)
 		throws IllegalArgumentException {
 		int off = 0;
-		StringBuffer rs = new StringBuffer();
+		StringBuilder rs = new StringBuilder();
 		int c1, c2;
 
 		if (len <= 0 || len > d.length)
@@ -440,7 +440,7 @@ public class BCrypt {
 	 */
 	private static byte[] decode_base64(String s, int maxolen)
 		throws IllegalArgumentException {
-		StringBuffer rs = new StringBuffer();
+		StringBuilder rs = new StringBuilder();
 		int off = 0, slen = s.length(), olen = 0;
 		byte ret[];
 		byte c1, c2, c3, c4, o;
@@ -485,7 +485,7 @@ public class BCrypt {
 	 * @param lr	an array containing the two 32-bit half blocks
 	 * @param off	the position in the array of the blocks
 	 */
-	private final void encipher(int lr[], int off) {
+	private void encipher(int lr[], int off) {
 		int i, n, l = lr[off], r = lr[off + 1];
 
 		l ^= P[0];
@@ -533,8 +533,8 @@ public class BCrypt {
 	 * Initialise the Blowfish key schedule
 	 */
 	private void init_key() {
-		P = (int[])P_orig.clone();
-		S = (int[])S_orig.clone();
+		P = P_orig.clone();
+		S = S_orig.clone();
 	}
 
 	/**
@@ -652,8 +652,8 @@ public class BCrypt {
 		String real_salt;
 		byte passwordb[], saltb[], hashed[];
 		char minor = (char)0;
-		int rounds, off = 0;
-		StringBuffer rs = new StringBuffer();
+		int rounds, off;
+		StringBuilder rs = new StringBuilder();
 
 		if (salt.charAt(0) != '$' || salt.charAt(1) != '2')
 			throw new IllegalArgumentException ("Invalid salt version");
@@ -681,8 +681,7 @@ public class BCrypt {
 		saltb = decode_base64(real_salt, BCRYPT_SALT_LEN);
 
 		B = new BCrypt();
-		hashed = B.crypt_raw(passwordb, saltb, rounds,
-		    (int[])bf_crypt_ciphertext.clone());
+		hashed = B.crypt_raw(passwordb, saltb, rounds, bf_crypt_ciphertext.clone());
 
 		rs.append("$2");
 		if (minor >= 'a')
@@ -697,8 +696,7 @@ public class BCrypt {
 		rs.append(Integer.toString(rounds));
 		rs.append("$");
 		rs.append(encode_base64(saltb, saltb.length));
-		rs.append(encode_base64(hashed,
-		    bf_crypt_ciphertext.length * 4 - 1));
+		rs.append(encode_base64(hashed, bf_crypt_ciphertext.length * 4 - 1));
 		return rs.toString();
 	}
 
@@ -711,7 +709,7 @@ public class BCrypt {
 	 * @return	an encoded salt value
 	 */
 	public static String gensalt(int log_rounds, SecureRandom random) {
-		StringBuffer rs = new StringBuffer();
+		StringBuilder rs = new StringBuilder();
 		byte rnd[] = new byte[BCRYPT_SALT_LEN];
 
 		random.nextBytes(rnd);
