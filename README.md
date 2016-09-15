@@ -66,6 +66,12 @@ Use it in your project by adding the following to your project *pom.xml*:
 
 # Local fork notes:
 
+square-2:
+Introduce a gensalt() method that takes the schema id as a parameter and replace
+the method with the original signature to use a default of '2a'. This change should
+preserve compatibility with other bcrypt libraries that are not yet updated to
+handle the '2b' schema.
+
 square-1: 
 Supports $2b$ prefix for modular crypt formatted hashes on verification, and writes
 using the same updated prefix. See http://www.openwall.com/lists/oss-security/2012/01/02/4
