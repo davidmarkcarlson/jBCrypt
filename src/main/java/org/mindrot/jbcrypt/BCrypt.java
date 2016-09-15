@@ -703,7 +703,9 @@ public class BCrypt {
 	}
 
 	/**
-	 * Generate a salt for use with the BCrypt.hashpw() method
+	 * Generate a salt for use with the BCrypt.hashpw() method. Use
+	 * '2a' as the MCF scheme id.
+	 *
 	 * @param log_rounds	the log2 of the number of rounds of
 	 * hashing to apply - the work factor therefore increases as
 	 * 2**log_rounds.
@@ -711,12 +713,27 @@ public class BCrypt {
 	 * @return	an encoded salt value
 	 */
 	public static String gensalt(int log_rounds, SecureRandom random) {
+		return gensalt("2a", log_rounds, random);
+	}
+
+	/**
+	 * Generate a salt for use with the BCrypt.hashpw() method
+	 * @param schemeId  an schema identifier in the modular crypt format encoding.
+	 * @param log_rounds  the log2 of the number of rounds of
+	 * hashing to apply - the work factor therefore increases as
+	 * 2**log_rounds.
+	 * @param random    an instance of SecureRandom to use
+	 * @return	an encoded salt value
+	 */
+	public static String gensalt(String schemeId, int log_rounds, SecureRandom random) {
 		StringBuffer rs = new StringBuffer();
 		byte rnd[] = new byte[BCRYPT_SALT_LEN];
 
 		random.nextBytes(rnd);
 
-		rs.append("$2b$");
+		rs.append("$");
+		rs.append(schemeId);
+		rs.append("$");
 		if (log_rounds < 10)
 			rs.append("0");
 		if (log_rounds > 30) {
